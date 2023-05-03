@@ -40,10 +40,12 @@ function fullscreenImg(evt) {
 
   instance.show();
 
-  refs.listEl.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
+  refs.listEl.addEventListener("keydown", onEscClick);
+
+  function onEscClick(evt) {
+    if (evt.key === "Escape") {
       instance.close();
     }
-    refs.listEl.removeEventListener("keydown", (e) => {});
-  });
+    refs.listEl.removeEventListener("keydown", onEscClick);
+  }
 }
